@@ -1,0 +1,10 @@
+user = {{DB_USER}}
+password = {{DB_PASS}}
+hosts = {{DB_HOST}}
+dbname = {{DB_NAME}}
+query = SELECT email FROM mail_user WHERE email='%s' AND postfix='y' AND server_id = 1
+
+#table = mail_user
+#select_field = email
+#where_field = email
+#additional_conditions = and postfix = 'y' and server_id = 1
