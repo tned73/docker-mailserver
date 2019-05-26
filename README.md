@@ -407,6 +407,12 @@ Note: this spamassassin setting needs `ENABLE_SPAMASSASSIN=1`
 ##### FETCHMAIL_POLL
   - **300** => `fetchmail` The number of seconds for the interval
 
+## MYSQL
+
+##### ENABLE_MYSQL
+  - **empty** => MYSQL authentification is disabled
+  - 1 => MYSQL authentification is enabled
+
 ## LDAP
 
 ##### ENABLE_LDAP
