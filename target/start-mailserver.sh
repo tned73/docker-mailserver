@@ -667,7 +667,7 @@ function _setup_mysql() {
 	for var in ${!_postfix_mysql_mapping[@]}; do
 		export $var=${_postfix_mysql_mapping[$var]}
 	done
-	for f in /etc/postfix/mysql-virtual_mailboxes.cf /etc/postfix/mysql-virtual_forwardings.cf /etc/postfix/mysql-virtual_email2email.cf /etc/postfix/mysql-virtual_domains.cf
+	for f in "/etc/postfix/mysql-virtual_mailboxes.cf" "/etc/postfix/mysql-virtual_forwardings.cf" "/etc/postfix/mysql-virtual_email2email.cf" "/etc/postfix/mysql-virtual_domains.cf"
 	do
 		configomat.sh "POSTFIX_MYSQL_" "$f"
 	done
@@ -685,10 +685,10 @@ function _setup_mysql() {
 		export $var=${_dovecot_mysql_mapping[$var]}
 	done
 
-	configomat.sh "DOVECOT_MYSQL_" "/etc/dovecot/dovecot-sql.conf.ext"
+	configomat.sh "DOVECOT_MYSQL_" "target/dovecot/auth-sql.conf.ext"
 
 	_dovecot_mysql_connect_escaped=$(sed 's/[&/\]/\\&/g' <<<"$_dovecot_mysql_connect")
-	sed -i  "s/^connect.*/connect = $_dovecot_mysql_connect_escaped/g" "/etc/dovecot/dovecot-sql.conf.ext"
+	sed -i  "s/^connect.*/connect = $_dovecot_mysql_connect_escaped/g" "target/dovecot/auth-sql.conf.ext"
 	# Add  domainname to vhost.
 	echo $DOMAINNAME >> /tmp/vhost.tmp
 
