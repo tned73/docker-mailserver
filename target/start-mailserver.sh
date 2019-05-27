@@ -667,7 +667,7 @@ function _setup_mysql() {
 	for var in ${!_postfix_mysql_mapping[@]}; do
 		export $var=${_postfix_mysql_mapping[$var]}
 	done
-	for f in "/etc/postfix/mysql-virtual-mailboxes.cf" "/etc/postfix/mysql-virtual-forwardings.cf" "/etc/postfix/mysql-virtual-email2email.cf" "/etc/postfix/mysql-virtual-domains.cf"
+	for f in /etc/postfix/mysql-virtual-mailboxes.cf /etc/postfix/mysql-virtual-forwardings.cf /etc/postfix/mysql-virtual-email2email.cf /etc/postfix/mysql-virtual-domains.cf
 	do
 		configomat.sh "POSTFIX_MYSQL_" "$f"
 	done
