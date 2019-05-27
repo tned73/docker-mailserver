@@ -685,10 +685,10 @@ function _setup_mysql() {
 		export $var=${_dovecot_mysql_mapping[$var]}
 	done
 
-	configomat.sh "DOVECOT_MYSQL_" "/etc/dovecot/auth-sql.conf.ext"
+	configomat.sh "DOVECOT_MYSQL_" "/etc/dovecot/dovecot-sql.conf.ext"
 
 	_dovecot_mysql_connect_escaped=$(sed 's/[&/\]/\\&/g' <<<"$_dovecot_mysql_connect")
-	sed -i  "s/^connect.*/connect = $_dovecot_mysql_connect_escaped/g" "/etc/dovecot/auth-sql.conf.ext"
+	sed -i  "s/^connect.*/connect = $_dovecot_mysql_connect_escaped/g" "/etc/dovecot/dovecot-sql.conf.ext"
 	# Add  domainname to vhost.
 	echo $DOMAINNAME >> /tmp/vhost.tmp
 
