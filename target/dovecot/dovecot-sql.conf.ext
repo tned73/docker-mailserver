@@ -7,7 +7,7 @@ connect 			= "host= dbname= user= password="
 # user_query 			= SELECT CONCAT('/var/mail/', maildir) AS home, 5000 AS uid, 5000 AS gid, CONCAT('*:bytes=', quota) AS quota_rule FROM mailbox WHERE username = '%u' AND active='1'
 # iterate_query 		= SELECT username AS user FROM mailbox
 
-default_pass_scheme = CRYPT
+default_pass_scheme = MD5-CRYPT
 
 password_query = SELECT email as username, password FROM mail_user WHERE (login = '%u' OR email = '%u') 
 user_query = SELECT email as user, maildir as home, CONCAT('maildir:', maildir) as mail, uid, gid, CONCAT('*:storage=', quota, 'B') AS quota_rule FROM mail_user WHERE (login = '%u' OR email = '%u') 
