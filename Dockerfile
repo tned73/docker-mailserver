@@ -129,7 +129,7 @@ COPY target/postfix/ldap-users.cf target/postfix/ldap-groups.cf target/postfix/l
 
 # Configure MYSQL
 COPY target/dovecot/dovecot-sql.conf.ext /etc/dovecot
-COPY target/postfix/mysql-virtual_domains.cf target/postfix/mysql-virtual_email2email.cf target/postfix/mysql-virtual_forwardings.cf target/postfix/mysql-virtual_mailboxes.cf /etc/postfix/
+COPY target/postfix/mysql-virtual-domains.cf target/postfix/mysql-virtual-email2email.cf target/postfix/mysql-virtual-forwardings.cf target/postfix/mysql-virtual-mailboxes.cf /etc/postfix/
 
 # Enables Spamassassin CRON updates and update hook for supervisor
 RUN sed -i -r 's/^(CRON)=0/\1=1/g' /etc/default/spamassassin && \

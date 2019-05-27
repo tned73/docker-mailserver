@@ -667,7 +667,7 @@ function _setup_mysql() {
 	for var in ${!_postfix_mysql_mapping[@]}; do
 		export $var=${_postfix_mysql_mapping[$var]}
 	done
-	for f in "/etc/postfix/mysql-virtual_mailboxes.cf" "/etc/postfix/mysql-virtual_forwardings.cf" "/etc/postfix/mysql-virtual_email2email.cf" "/etc/postfix/mysql-virtual_domains.cf"
+	for f in "/etc/postfix/mysql-virtual-mailboxes.cf" "/etc/postfix/mysql-virtual-forwardings.cf" "/etc/postfix/mysql-virtual-email2email.cf" "/etc/postfix/mysql-virtual-domains.cf"
 	do
 		configomat.sh "POSTFIX_MYSQL_" "$f"
 	done
@@ -699,16 +699,16 @@ function _setup_mysql() {
 
 	notify 'inf' "Configuring MySQL"
 	[ -f /etc/postfix/mysql-maps.cf ] && \
-		postconf -e virtual_mailbox_maps="mysql:/etc/postfix/mysql-virtual_mailboxes.cf" || \
-		notify 'inf' "==> Warning: /etc/postfix/mysql-virtual_mailboxes.cf not found"
+		postconf -e virtual_mailbox_maps="mysql:/etc/postfix/mysql-virtual-mailboxes.cf" || \
+		notify 'inf' "==> Warning: /etc/postfix/mysql-virtual-mailboxes.cf not found"
 
 	[ -f /etc/postfix/mysql-aliases.cf ] && \
-		postconf -e virtual_alias_maps="mysql:/etc/postfix/mysql-virtual_forwardings.cf, mysql:/etc/postfix/mysql-virtual_email2email.cf" || \
+		postconf -e virtual_alias_maps="mysql:/etc/postfix/mysql-virtual-forwardings.cf, mysql:/etc/postfix/mysql-virtual-email2email.cf" || \
 		notify 'inf' "==> Warning: /etc/postfix/mysql-aliases.cf not found"
 
 	[ -f /etc/postfix/mysql-domains.cf ] && \
-		postconf -e virtual_mailbox_domains="mysql:/etc/postfix/mysql-virtual_domains.cf" || \
-		notify 'inf' "==> Warning: /etc/postfix/mysql-virtual_domains.cf not found"
+		postconf -e virtual_mailbox_domains="mysql:/etc/postfix/mysql-virtual-domains.cf" || \
+		notify 'inf' "==> Warning: /etc/postfix/mysql-virtual-domains.cf not found"
 
 	return 0
 }
