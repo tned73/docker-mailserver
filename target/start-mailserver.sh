@@ -698,15 +698,15 @@ function _setup_mysql() {
 	sed -i -e '/\!include auth-ldap\.inc/s/^/#/' /etc/dovecot/conf.d/10-auth.conf
 
 	notify 'inf' "Configuring MySQL"
-	[ -f /etc/postfix/mysql-maps.cf ] && \
+	[ -f /etc/postfix/mysql-virtual-mailboxes.cf ] && \
 		postconf -e virtual_mailbox_maps="mysql:/etc/postfix/mysql-virtual-mailboxes.cf" || \
 		notify 'inf' "==> Warning: /etc/postfix/mysql-virtual-mailboxes.cf not found"
 
-	[ -f /etc/postfix/mysql-aliases.cf ] && \
+	[ -f /etc/postfix/mysql-virtual-forwardings.cf ] && \
 		postconf -e virtual_alias_maps="mysql:/etc/postfix/mysql-virtual-forwardings.cf, mysql:/etc/postfix/mysql-virtual-email2email.cf" || \
 		notify 'inf' "==> Warning: /etc/postfix/mysql-aliases.cf not found"
 
-	[ -f /etc/postfix/mysql-domains.cf ] && \
+	[ -f /etc/postfix/mysql-virtual-domains.cf ] && \
 		postconf -e virtual_mailbox_domains="mysql:/etc/postfix/mysql-virtual-domains.cf" || \
 		notify 'inf' "==> Warning: /etc/postfix/mysql-virtual-domains.cf not found"
 
